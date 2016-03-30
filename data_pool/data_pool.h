@@ -1,3 +1,4 @@
+
 /*************************************************************************
 	> File Name: data_pool.h
 	> Author: fjl_57
@@ -5,25 +6,21 @@
 	> Created Time: Tue 22 Mar 2016 07:08:06 PM CST
  ************************************************************************/
 #pragma once
-#include<iostream>
-#include<string>
-#include<semaphore.h>
-#define CAPACITY 1024
-
+#include <iostream>
+#include <string>
+#include <semaphore.h>//
+#include <vector>
+#define CAPACITY 1024 //data_pool 最大存储量
 class data_pool{
-
 public:
 	data_pool();
-	void put_msg(const std::string &_msg);
-	const std::string get_msg();
+	void put_msg(const std::string &_in_msg);
+	void get_msg(std::string &_out_msg);
 	~data_pool();
 private:
 	sem_t put_sem;
 	sem_t get_sem;
-	vector<std::string> pool; //
-	//int capacity; //
-	int size;
+	std::vector<std::string> pool;
 	int start;
 	int end;
-
 };
